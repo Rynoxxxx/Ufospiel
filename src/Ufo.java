@@ -1,12 +1,13 @@
 import GLOOP.*;
 public class Ufo{
-    private GLPrismoid rumpf;
+    private GLQuader rumpf;
 
     private GLTastatur tastatur;
 
 
+
     public Ufo(){
-        rumpf = new GLPrismoid(0,0,150, 50,50,3,20);
+        rumpf = new GLQuader(0,0,150, 50,50,4);
         rumpf.setzeFarbe(0,0,0);
 
     }
@@ -51,10 +52,10 @@ public class Ufo{
         return rumpf.gibZ();
     }
 
-
-
-    public void explodiere(){
-        //[...]
+    public void farbe(){
+        rumpf.setzeFarbe(1,0,0);
     }
+
+
 
 }
