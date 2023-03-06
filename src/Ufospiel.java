@@ -12,7 +12,7 @@ public class Ufospiel {
     //[...]
 
     public Ufospiel() {
-        kamera = new GLSchwenkkamera(1600, 900);
+        kamera = new GLKamera(1600, 900);
         kamera.verschiebe(0, -200, -300);
         kamera.setzeBlickpunkt(0, 0, 150);
         licht = new GLLicht();
@@ -26,7 +26,7 @@ public class Ufospiel {
         dasUfo = new Ufo();
         asteroid = new Asteroid[100];
         for (int i = 0; i < asteroid.length; i++) {
-            asteroid[i] = new Asteroid();
+            asteroid[i] = new Asteroid(dasUfo);
 
         }
 
@@ -40,28 +40,39 @@ public class Ufospiel {
                 asteroid[i].bewegeDich();
                 if (asteroid[i].hit()) {
                     dasUfo.farbe();
+                    Sys.warte(2000);
+                    dasUfo.noclip();
+                    Sys.warte(1000);
+                    dasUfo.explosion();
+                    Sys.warte(1000);
+                    dasUfo.tot();                                               //hier löschen
+                    Sys.warte(3000);
+                    dasUfo.respawn();
+                    Sys.warte(1000);
+                    kamera.setzePosition(0,-300,100);
+                    dasUfo.farbeOff();
+                    dasUfo.noclipOff();
                 }
 
-
-                if (tastatur.istGedrueckt('a') && (dasUfo.gibXUfo() > -800)) {
-                    dasUfo.bewegeLinks();
-                    kamera.verschiebe(-5, 0, 0);
-                }
-                if (tastatur.istGedrueckt('d') && (dasUfo.gibXUfo() < 750)) {
-                    dasUfo.bewegeRechts();
-                    kamera.verschiebe(5, 0, 0);
-                }
-                if ((tastatur.istGedrueckt('w')) && (dasUfo.gibZUfo() < 1350)) {
-                    dasUfo.bewegeOben();
-                    kamera.verschiebe(0, 0, 5);
-                }
-                if ((tastatur.istGedrueckt('s')) && (dasUfo.gibZUfo() > -150)) {
-                    dasUfo.bewegeUnten();
-                    kamera.verschiebe(0, 0, -5);
-                }
-                if ((!tastatur.istGedrueckt('s')) && (!tastatur.istGedrueckt('w')) && (!tastatur.istGedrueckt('a')) && (!tastatur.istGedrueckt('d'))) {
-                    dasUfo.normal();
-                }
+            }
+            if (tastatur.istGedrueckt('a') && (dasUfo.gibXUfo() > -800)) {
+                dasUfo.bewegeLinks();
+                kamera.verschiebe(-5, 0, 0);
+            }
+            if (tastatur.istGedrueckt('d') && (dasUfo.gibXUfo() < 750)) {
+                dasUfo.bewegeRechts();
+                kamera.verschiebe(5, 0, 0);
+            }
+            if ((tastatur.istGedrueckt('w')) && (dasUfo.gibZUfo() < 1350)) {
+                dasUfo.bewegeOben();
+                kamera.verschiebe(0, 0, 5);
+            }
+            if ((tastatur.istGedrueckt('s')) && (dasUfo.gibZUfo() > -150)) {
+                dasUfo.bewegeUnten();
+                kamera.verschiebe(0, 0, -5);
+            }
+            if ((!tastatur.istGedrueckt('s')) && (!tastatur.istGedrueckt('w')) && (!tastatur.istGedrueckt('a')) && (!tastatur.istGedrueckt('d'))) {
+                dasUfo.normal();
             }
                 this.kamerafolge();
                 Sys.warte(5);

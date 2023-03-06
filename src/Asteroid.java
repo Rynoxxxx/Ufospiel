@@ -5,9 +5,9 @@ public class Asteroid{
 
     private Ufo dasUfo;
 
-    public Asteroid(){
+    public Asteroid(Ufo pDasUfo){
         kugel = new GLKugel(Math.random()*1600-1000,Math.random()*2000+3000,Math.random()*1500-100, 50, "src/img/Krater.jpg");
-
+        dasUfo = pDasUfo;
     }
     public void reset(){
         kugel.setzePosition(Math.random()*1600-1000,Math.random()*2000+3000,Math.random()*1500-100);
@@ -29,7 +29,7 @@ public class Asteroid{
 
         public boolean hit() {
             double distance = Math.sqrt(Math.pow(kugel.gibX() - dasUfo.gibXUfo(), 2) + Math.pow(kugel.gibY() - dasUfo.gibYUfo(), 2) + Math.pow(kugel.gibZ() - dasUfo.gibZUfo(), 2));
-            if (distance<25) return true;
+            if (distance<75) return true;
             else return false;
     }
 
