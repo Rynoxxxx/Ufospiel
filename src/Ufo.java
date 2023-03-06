@@ -9,7 +9,8 @@ public class Ufo{
     public Ufo(){
         rumpf = new GLQuader(0,0,150, 50,50,50);
         rumpf.setzeFarbe(0,0,0);
-        explo = new GLTafel(0,0,150,640,426,"src/img/explosion.png");
+        explo = new GLTafel(0,0,150,200,200,"src/img/expolsion.png");
+        explo.drehe(-90,0,180);
         explo.setzeSichtbarkeit(false);
     }
  
@@ -68,6 +69,7 @@ public class Ufo{
     }
     public void tot(){
         rumpf.setzePosition(0,0,0);
+        explo.setzePosition(0,0,0);
     }
     public void explosion(){
         explo.setzeSichtbarkeit(true);

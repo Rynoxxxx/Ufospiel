@@ -24,7 +24,7 @@ public class Ufospiel {
 
 
         dasUfo = new Ufo();
-        asteroid = new Asteroid[100];
+        asteroid = new Asteroid[300];
         for (int i = 0; i < asteroid.length; i++) {
             asteroid[i] = new Asteroid(dasUfo);
 
@@ -40,15 +40,11 @@ public class Ufospiel {
                 asteroid[i].bewegeDich();
                 if (asteroid[i].hit()) {
                     dasUfo.farbe();
-                    Sys.warte(2000);
                     dasUfo.noclip();
-                    Sys.warte(1000);
                     dasUfo.explosion();
-                    Sys.warte(1000);
+                    Sys.warte(2000);
                     dasUfo.tot();                                               //hier löschen
-                    Sys.warte(3000);
                     dasUfo.respawn();
-                    Sys.warte(1000);
                     kamera.setzePosition(0,-300,100);
                     dasUfo.farbeOff();
                     dasUfo.noclipOff();
