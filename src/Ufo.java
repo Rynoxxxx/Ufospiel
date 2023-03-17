@@ -7,7 +7,7 @@ public class Ufo{
 
 
     public Ufo(){
-        rumpf = new GLQuader(0,0,150, 50,50,50);
+        rumpf = new GLQuader(0,0,150, 50,50,50,"src/img/meme.gif");
         rumpf.setzeFarbe(0,0,0);
         explo = new GLTafel(0,0,150,200,200,"src/img/expolsion.png");
         explo.drehe(-90,0,180);

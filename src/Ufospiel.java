@@ -38,15 +38,18 @@ public class Ufospiel {
         while (!tastatur.esc()) {
             for (int i = 0; i < asteroid.length; i++) {
                 asteroid[i].bewegeDich();
+                asteroid[i].drehe();
                 if (asteroid[i].hit()) {
                     dasUfo.farbe();
                     dasUfo.noclip();
                     dasUfo.explosion();
                     Sys.warte(2000);
-                    dasUfo.tot();                                               //hier löschen
+                    dasUfo.tot();
                     dasUfo.respawn();
                     kamera.setzePosition(0,-300,100);
-                    asteroid[i].tot();
+                    for (int e = 0; e < asteroid.length; e++) {
+                        asteroid[e].tot();
+                    }
                     dasUfo.farbeOff();
                     dasUfo.noclipOff();
                 }
