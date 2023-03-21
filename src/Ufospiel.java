@@ -1,12 +1,13 @@
 import GLOOP.*; 
 public class Ufospiel {
     private GLKamera kamera;
-    private GLLicht licht;
+    private GLLicht licht,licht1;
     private GLTastatur tastatur;
     private GLHimmel himmel;
 
     public Asteroid[] asteroid;
     private Ufo dasUfo;
+    private Coins coin;
     int ufohoehe, ufolaenge, ufobreite;
 
     //[...]
@@ -16,12 +17,13 @@ public class Ufospiel {
         kamera.verschiebe(0, -200, -300);
         kamera.setzeBlickpunkt(0, 0, 150);
         licht = new GLLicht();
+        licht1 = new GLLicht(0,-500,-500);
         tastatur = new GLTastatur();
         himmel = new GLHimmel("src/img/Sterne.jpg");
         ufohoehe = 2;
         ufolaenge = 25;
         ufobreite = 25;
-
+        coin = new Coins(-(Math.random()*10+5));
 
         dasUfo = new Ufo();
         asteroid = new Asteroid[300];
@@ -39,6 +41,8 @@ public class Ufospiel {
             for (int i = 0; i < asteroid.length; i++) {
                 asteroid[i].bewegeDich();
                 asteroid[i].drehe();
+                coin.moveCoin();
+                coin.dreheCoin();
                 if (asteroid[i].hit()) {
                     dasUfo.farbe();
                     dasUfo.noclip();
