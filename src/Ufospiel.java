@@ -23,7 +23,7 @@ public class Ufospiel {
         ufohoehe = 2;
         ufolaenge = 25;
         ufobreite = 25;
-        coin = new Coins(-(Math.random()*10+5));
+        coin = new Coins(-0.05);
 
         dasUfo = new Ufo();
         asteroid = new Asteroid[300];
