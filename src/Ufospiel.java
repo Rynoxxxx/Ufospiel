@@ -4,27 +4,36 @@ public class Ufospiel {
     private GLLicht licht,licht1;
     private GLTastatur tastatur;
     private GLHimmel himmel;
-
+    private GLTafel counter,coins;
     public Asteroid[] asteroid;
     private Ufo dasUfo;
     private Coins coin;
-    int ufohoehe, ufolaenge, ufobreite;
+    int ufohoehe, ufolaenge, ufobreite,zahl;
 
     //[...]
 
     public Ufospiel() {
-        kamera = new GLKamera(1600, 900);
+        kamera = new GLKamera();
         kamera.verschiebe(0, -200, -300);
         kamera.setzeBlickpunkt(0, 0, 150);
         licht = new GLLicht();
         licht1 = new GLLicht(0,-500,-500);
         tastatur = new GLTastatur();
         himmel = new GLHimmel("src/img/Sterne.jpg");
+        counter = new GLTafel(0,-140,145,190,15);
+        counter.drehe(74.5,0,0);
+        counter.setzeFarbe(128/255,128/255,128/255);
+        counter.setzeKamerafixierung(true);
         ufohoehe = 2;
+        zahl = 0;
+        coins = new GLTafel(0,-141,145,30,10);
+        coins.drehe(74.5,0,0);
+        coins.setzeKamerafixierung(true);
+        coins.setzeText(String.valueOf(zahl),10);
         ufolaenge = 25;
         ufobreite = 25;
-        coin = new Coins(-0.05);
-
+        coin = new Coins(dasUfo,-0.05);
+        coin.tot();
         dasUfo = new Ufo();
         asteroid = new Asteroid[300];
         for (int i = 0; i < asteroid.length; i++) {
@@ -43,6 +52,9 @@ public class Ufospiel {
                 asteroid[i].drehe();
                 coin.moveCoin();
                 coin.dreheCoin();
+                if(coin.hit()){
+                    zahl++;
+                }
                 if (asteroid[i].hit()) {
                     dasUfo.farbe();
                     dasUfo.noclip();

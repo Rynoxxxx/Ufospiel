@@ -11,14 +11,14 @@ public class Asteroid{
 
     public Asteroid(Ufo pDasUfo,double geschw, double radius){
         rad=radius;
-        kugel = new GLKugel(Math.random()*1600-1000,Math.random()*2000+3000,Math.random()*1500-100, rad, "src/img/Krater.jpg");
+        kugel = new GLKugel(Math.random()*3000-1500,Math.random()*2000+3000,Math.random()*1900-300, rad, "src/img/Krater.jpg");
         kugel.skaliere(Math.random()+1,Math.random()+1,Math.random()+1);
         dasUfo = pDasUfo;
         geschw1=geschw;
 
     }
     public void reset(){
-        kugel.setzePosition(Math.random()*1600-1000,Math.random()*2000+3000,Math.random()*1500-100);
+        kugel.setzePosition(Math.random()*3000-1500,Math.random()*2000+3000,Math.random()*1900-300);
     }
 
     public void drehe(){
@@ -47,7 +47,7 @@ public class Asteroid{
             else return false;
     }
     public void tot(){
-        kugel.setzePosition(Math.random()*1600-1000,Math.random()*2000+3000,Math.random()*1500-100);
+        kugel.setzePosition(Math.random()*3000-1500,Math.random()*2000+3000,Math.random()*1900-300);
     }
 
 
