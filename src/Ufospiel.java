@@ -32,9 +32,9 @@ public class Ufospiel {
         coins.setzeText(String.valueOf(zahl),10);
         ufolaenge = 25;
         ufobreite = 25;
+        dasUfo = new Ufo();
         coin = new Coins(dasUfo,-0.05);
         coin.tot();
-        dasUfo = new Ufo();
         asteroid = new Asteroid[300];
         for (int i = 0; i < asteroid.length; i++) {
             asteroid[i] = new Asteroid(dasUfo, -(Math.random()*10+5), Math.random()*25+25);
@@ -53,7 +53,8 @@ public class Ufospiel {
                 coin.moveCoin();
                 coin.dreheCoin();
                 if(coin.hit()){
-                    zahl++;
+                    zahl= zahl+1;
+                    coin.reset();
                 }
                 if (asteroid[i].hit()) {
                     dasUfo.farbe();
