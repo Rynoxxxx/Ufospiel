@@ -2,9 +2,9 @@ import GLOOP.*;
 public class Hunger {
     public double geschw1;
     private Ufo dasUfo;
-    GLZylinder food;
+    GLTafel food;
     public Hunger(Ufo pDasUfo, double geschw){
-        food = new GLZylinder(Math.random()*1600-1000,5000,Math.random()*1500-100,30,10);//y=Math.random()*2000+3000
+        food = new GLTafel(Math.random()*1600-1000,5000,Math.random()*1500-100,80,80);//y=Math.random()*2000+3000
         food.drehe(-90,0,0);
         food.setzeTextur("src/img/Startkeule.png");
         geschw1=geschw;
@@ -14,7 +14,7 @@ public class Hunger {
         System.out.println("true");
     }
     public void dreheEssen() {
-        food.drehe(0, 0, 0.005);
+        food.drehe(0, 0, 0.005);//0.005
 
 
     }

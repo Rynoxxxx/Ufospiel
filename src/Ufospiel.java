@@ -166,7 +166,7 @@ public class Ufospiel {
                         essen[0].setzeSichtbarkeit(false);
                         ubrigHunger--;
                         Sys.warte(10000);
-                        System.out.println("lelelelelelle");
+                        //System.out.println("lelelelelelle");
                         Sys.beenden();
                     }
                     if(ubrigHunger==2){
